@@ -20,6 +20,8 @@ on:
         description: 'CM Pronnel Ticket ID'     
         required: true
 
+env:
+  PRONNEL_AUTH: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoibE5BNk9DTE9BcklsTllCWU01Sj1QLktxTmxDR0F1Qy1FbE5NTE1MZE1lQnZOYUhtSHpEVkJJTDlPOEpoSGpDME9ZR3NJNElYTS5LLktKR25DPEZVRylFU0J6RF5FMk96TyhQbkM6RkRGOERbSytLWUdXRytLckMyT3tQWk1OQV5KZUhASlFHUkdHRmtDKkV7UEVMN0RLRzdPY0hFTGVCRUY9UGpDL0ZWQmVIa04wRG9Idk5NQTxLPUciLCJ1c2VyX2lkIjoiNjM4NDY4YzIzYTdlNmEwMDJkYWE4NWQ5Iiwib3JnX2lkIjoiNjM3YmM1MzIzYmE4MDExY2E0NWM2NmY5IiwiaWF0IjoxNjk3MDIxODMxfQ.a_zLS19PWgT9TAzeTX_qhoFMExPka-_5szKNSsikVsU
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
