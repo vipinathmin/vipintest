@@ -42,7 +42,7 @@ jobs:
         echo "::set-output name=bucket_id::$bucket_id"
     
     - name: Set bucket_identifier variable
-      run: echo "bucket_identifier=${{ steps.extract_bucket_id.outputs.bucket_id }}"
+      run: echo "bucket_identifier=$bucket_id"
     
     - name: Use the bucket_identifier
       run: echo "The bucket_id is ${{ env.bucket_identifier }}"
