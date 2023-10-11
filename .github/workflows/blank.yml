@@ -31,19 +31,16 @@ jobs:
     steps:
     - name: Send HTTP POST request to Pronnel API
       id: request
-      uses: actions/http-request@v2
-      with:
-        url: 'https://api.pronnel.com/board/item/query'
-        method: POST
-        headers: |
-          Authorization: ${{ secrets.PRONNEL_AUTH }}
-          Content-Type: application/json
-        data: '{"seq_id": [1], "board_id": ["65267fc87b5586003148afcd"]}'
-    
-    - name: Extract bucket_id from response
-      id: extract_bucket_id
-      run: echo "::set-output name=bucket_id::$(echo '${{ steps.request.outputs.response }}' | jq -r '.bucket_id')"
+      run: |
+        response=$(curl -s --location --request POST 'https://api.pronnel.com/board/item/query' \
+          --header "Authorization: $PRONNEL_AUTH" \
+          --header 'Content-Type: application/json' \
+          --data-raw '{"seq_id": [1], "board_id": ["65267fc87b5586003148afcd"]}')
 
+        bucket_id=$(echo "$response" | jq -r '.bucket_id')
+
+        echo "::set-output name=bucket_id::$bucket_id"
+    
     - name: Set bucket_identifier variable
       run: echo "bucket_identifier=${{ steps.extract_bucket_id.outputs.bucket_id }}"
     
