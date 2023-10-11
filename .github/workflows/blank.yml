@@ -23,7 +23,33 @@ on:
 env:
   PRONNEL_AUTH: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoibE5BNk9DTE9BcklsTllCWU01Sj1QLktxTmxDR0F1Qy1FbE5NTE1MZE1lQnZOYUhtSHpEVkJJTDlPOEpoSGpDME9ZR3NJNElYTS5LLktKR25DPEZVRylFU0J6RF5FMk96TyhQbkM6RkRGOERbSytLWUdXRytLckMyT3tQWk1OQV5KZUhASlFHUkdHRmtDKkV7UEVMN0RLRzdPY0hFTGVCRUY9UGpDL0ZWQmVIa04wRG9Idk5NQTxLPUciLCJ1c2VyX2lkIjoiNjM4NDY4YzIzYTdlNmEwMDJkYWE4NWQ5Iiwib3JnX2lkIjoiNjM3YmM1MzIzYmE4MDExY2E0NWM2NmY5IiwiaWF0IjoxNjk3MDIxODMxfQ.a_zLS19PWgT9TAzeTX_qhoFMExPka-_5szKNSsikVsU
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
+
 jobs:
+  trigger_pronnel_api:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send HTTP POST request to Pronnel API
+      id: request
+      uses: actions/http-request@v2
+      with:
+        url: 'https://api.pronnel.com/board/item/query'
+        method: POST
+        headers: |
+          Authorization: ${{ secrets.PRONNEL_AUTH }}
+          Content-Type: application/json
+        data: '{"seq_id": [1], "board_id": ["65267fc87b5586003148afcd"]}'
+    
+    - name: Extract bucket_id from response
+      id: extract_bucket_id
+      run: echo "::set-output name=bucket_id::$(echo '${{ steps.request.outputs.response }}' | jq -r '.bucket_id')"
+
+    - name: Set bucket_identifier variable
+      run: echo "bucket_identifier=${{ steps.extract_bucket_id.outputs.bucket_id }}"
+    
+    - name: Use the bucket_identifier
+      run: echo "The bucket_id is ${{ env.bucket_identifier }}"
+      
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
