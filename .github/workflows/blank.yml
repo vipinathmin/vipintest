@@ -36,7 +36,7 @@ jobs:
           --header "Authorization: $PRONNEL_AUTH" \
           --header 'Content-Type: application/json' \
           --data-raw '{"seq_id": [1], "board_id": ["65267fc87b5586003148afcd"]}')
-
+        echo "$response"
         bucket_id=$(echo "$response" | jq -r '.bucket_id')
 
         echo "::set-output name=bucket_id::$bucket_id"
