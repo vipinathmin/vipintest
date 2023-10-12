@@ -42,8 +42,7 @@ jobs:
         echo "This is item Response Item Response $itemResponse"
         bucket_id=`echo $(jq -r '.[].bucket_id' <<< "$itemResponse")`
         echo "This is item Response Bucket ID $bucket_id"
-        export "$bucket_id"
-        if: "$response" != "$BUCKET_ID"
+        if: "$bucket_id" != "$BUCKET_ID"
           exit 1;
 
     
