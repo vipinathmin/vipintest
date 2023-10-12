@@ -37,8 +37,8 @@ jobs:
           --header 'Content-Type: application/json' \
           --data-raw '{"seq_id": [1], "board_id": ["65267fc87b5586003148afcd"]}')
         echo "$response"
-        itemResponse=`echo $(jq -r '.itemResponse' <<< "$response")`
-        echo "This is item Response $itemResponse"
+        bucket_id=`echo $(jq -r '.itemResponse.bucket_id' <<< "$response")`
+        echo "This is item Response $bucket_id"
 
     
     - name: Use the bucket_identifier
