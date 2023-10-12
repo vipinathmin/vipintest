@@ -38,7 +38,8 @@ jobs:
           --data-raw '{"seq_id": [1], "board_id": ["65267fc87b5586003148afcd"]}')
         echo "$response"
         itemResponse=`echo $(jq -r '.itemResponse' <<< "$response")`
-        bucket_id=`echo $(jq -r '.bucket_id' <<< "$itemResponse[0]")`
+        itemRes = itemResponse[0]
+        bucket_id=`echo $(jq -r '.bucket_id' <<< "$itemRes")`
         echo "This is item Response Item Response $itemResponse"
         echo "This is item Response Bucket ID $bucket_id"
 
