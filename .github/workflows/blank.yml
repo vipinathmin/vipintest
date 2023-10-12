@@ -41,7 +41,17 @@ jobs:
         echo "Thsi is bucket ID : $bucket_id"
         echo ${{ steps.request.response }}
         echo "::set-output name=bucket_id::$bucket_id"
-    
+
+    - name: Parse JSON
+      uses: actions/github-script@v6
+      id: parse
+      with:
+        script: |
+          var apps = JSON.parse(response)
+          echo "$apps"
+
+        
+        
     - name: Set bucket_identifier variable
       run: echo "bucket_identifier=$bucket_id"
     
