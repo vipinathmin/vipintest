@@ -44,6 +44,6 @@ jobs:
 
     
     - name: Use the bucket_identifier
-      run: echo "The bucket_id is ${{ env.bucket_identifier }}"
+      run: echo "The bucket_id is $bucket_id"
       
   
