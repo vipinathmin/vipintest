@@ -49,7 +49,7 @@ jobs:
         echo "This is item Response Bucket ID $bucket_id"
 
     - name: Check Condition
-      if: ${{env.BUCKET_ID}} != ${{bucket_id}}
+      if: ${{env.BUCKET_ID}} != "$bucket_id"
       run: |
         exit 1
  
