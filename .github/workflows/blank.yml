@@ -39,10 +39,8 @@ jobs:
         echo "$response"
         itemResponse=`echo $(jq -r '.itemResponse' <<< "$response")`
         echo "This is item Response Item Response $itemResponse"
-        echo "${itemResponse[0]}"
-        itemRes= "$itemResponse[0]"
-        echo "This is item Response itemRes $itemRes"
-        bucket_id=`echo $(jq -r '.bucket_id' <<< "$itemRes")`
+        bucket_id=`echo $(jq -r '.[].bucket_id' <<< "$itemResponse")`
+        bucket_id=`echo $(jq -r '.[].bucket_id' <<< "$itemResponse")`
         echo "This is item Response Bucket ID $bucket_id"
 
     
