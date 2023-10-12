@@ -42,8 +42,14 @@ jobs:
         echo "This is item Response Item Response $itemResponse"
         bucket_id=`echo $(jq -r '.[].bucket_id' <<< "$itemResponse")`
         echo "This is item Response Bucket ID $bucket_id"
-        if: "$bucket_id" != "$BUCKET_ID"
-          exit 1;
+        echo "bucket_id=$bucket_id" >> $GITHUB_ENV
+
+    - name: Check Global Variable
+      run: |
+        echo "This is item Response Bucket ID $bucket_id"
+ 
+    
+        
 
     
   
