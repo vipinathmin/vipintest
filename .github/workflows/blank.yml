@@ -47,6 +47,7 @@ jobs:
       id: parse
       with:
         script: |
+          echo "response"
           var apps = JSON.parse($response)
           echo "$apps"
 
