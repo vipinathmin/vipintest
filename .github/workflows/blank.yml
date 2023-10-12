@@ -47,6 +47,7 @@ jobs:
     - name: Check Global Variable
       run: |
         echo "This is item Response Bucket ID $bucket_id"
+        echo "This is BUCKET ID $BUCKET_ID"
 
     - name: Check Condition
       if: ${{env.BUCKET_ID}} != "$bucket_id"
