@@ -52,20 +52,28 @@ jobs:
     - name: Check Condition
       if: ${{env.BUCKET_ID}} != "$bucket_id"
       run: |
+        echo "This is item Response Bucket ID $bucket_id"
+        echo "This is BUCKET ID ${{env.BUCKET_ID}}"
         echo Not Matching
 
     - name: Check Condition 2
       if: ${{env.BUCKET_ID}} == "$bucket_id"
       run: |
+        echo "This is item Response Bucket ID $bucket_id"
+        echo "This is BUCKET ID ${{env.BUCKET_ID}}"
         echo Matching
     - name: Check Condition 3
       if: ${{env.BUCKET_ID}} != ${{env.bucket_id}}
       run: |
+        echo "This is item Response Bucket ID ${{env.bucket_id}}"
+        echo "This is BUCKET ID ${{env.BUCKET_ID}}"
         echo Not Matching
 
     - name: Check Condition 4
       if: ${{env.BUCKET_ID}} == ${{env.bucket_id}}
       run: |
+        echo "This is item Response Bucket ID ${{env.bucket_id}}"
+        echo "This is BUCKET ID ${{env.BUCKET_ID}}"
         echo Matching
     
         
