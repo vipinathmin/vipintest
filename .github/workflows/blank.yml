@@ -13,10 +13,10 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs: 
-      environment:
+      pronnel_ticket_id:
         description: 'Pronnel Ticket ID'     
         required: true
-      branch:
+      CM_ticket_id:
         description: 'CM Pronnel Ticket ID'     
         required: true
 
@@ -36,7 +36,7 @@ jobs:
         response=$(curl -s --location --request POST 'https://api.pronnel.com/board/item/query' \
           --header "Authorization: $PRONNEL_AUTH" \
           --header 'Content-Type: application/json' \
-          --data-raw '{"seq_id": [1], "board_id": ["65267fc87b5586003148afcd"]}')
+          --data-raw '{"seq_id": [$CM_ticket_id], "board_id": ["65267fc87b5586003148afcd"]}')
         echo "$response"
         itemResponse=`echo $(jq -r '.itemResponse' <<< "$response")`
         echo "This is item Response Item Response $itemResponse"
