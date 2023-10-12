@@ -52,7 +52,12 @@ jobs:
     - name: Check Condition
       if: ${{env.BUCKET_ID}} != "$bucket_id"
       run: |
-        exit 1
+        echo Not Matching
+
+    - name: Check Condition 2
+      if: ${{env.BUCKET_ID}} == "$bucket_id"
+      run: |
+        echo Matching
  
     
         
