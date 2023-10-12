@@ -47,46 +47,46 @@ jobs:
     - name: Check Global Variable
       run: |
         echo "This is item Response Bucket ID $bucket_id"
-        echo "This is BUCKET ID $BUCKET_ID"
+        echo "This is BUCKET ID $BUCKETT_ID"
 
     - name: Check Condition
       if: ${{env.BUCKETT_ID}} != "$bucket_id"
       run: |
         echo "This is item Response Bucket ID $bucket_id"
-        echo "This is BUCKET ID ${{env.BUCKET_ID}}"
+        echo "This is BUCKET ID ${{env.BUCKETT_ID}}"
         echo Not Matching
 
     - name: Check Condition 2
       if: ${{env.BUCKETT_ID}} == "$bucket_id"
       run: |
         echo "This is item Response Bucket ID $bucket_id"
-        echo "This is BUCKET ID ${{env.BUCKET_ID}}"
+        echo "This is BUCKET ID ${{env.BUCKETT_ID}}"
         echo Matching
     - name: Check Condition 3
       if: ${{env.BUCKETT_ID}} != ${{env.bucket_id}}
       run: |
         echo "This is item Response Bucket ID ${{env.bucket_id}}"
-        echo "This is BUCKET ID ${{env.BUCKET_ID}}"
+        echo "This is BUCKET ID ${{env.BUCKETT_ID}}"
         echo Not Matching
 
     - name: Check Condition 4
       if: ${{env.BUCKETT_ID}} == ${{env.bucket_id}}
       run: |
         echo "This is item Response Bucket ID ${{env.bucket_id}}"
-        echo "This is BUCKET ID ${{env.BUCKET_ID}}"
+        echo "This is BUCKET ID ${{env.BUCKETT_ID}}"
         echo Matching
     - name: Check Condition 4
       if: ${{env.BUCKETT_ID}} == bucket_id}}
       run: |
         echo "This is item Response Bucket ID ${{env.bucket_id}}"
-        echo "This is BUCKET ID ${{env.BUCKET_ID}}"
+        echo "This is BUCKET ID ${{env.BUCKETT_ID}}"
         echo Matching
 
     - name: Check Condition 4
       if: ${{env.BUCKETT_ID}} != bucket_id}}
       run: |
         echo "This is item Response Bucket ID ${{env.bucket_id}}"
-        echo "This is BUCKET ID ${{env.BUCKET_ID}}"
+        echo "This is BUCKET ID ${{env.BUCKETT_ID}}"
         echo Matching
         
 
